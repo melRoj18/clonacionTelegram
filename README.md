@@ -1,6 +1,6 @@
 # Clon de Telegram - Pantalla de Chats
 
-Clon estático de la pantalla principal de chats de Telegram, desarrollado en Flutter como proyecto académico.
+Clon estático de la pantalla principal de chats de Telegram
 
 ## Demo en Vivo
 
