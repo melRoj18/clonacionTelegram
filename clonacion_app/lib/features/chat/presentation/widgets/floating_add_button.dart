@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_icons.dart';
 import '../../../../core/constants/app_space.dart';
 
-/// Botón circular azul "+" flotante sobre la lista de chats.
-///
-/// Es puramente visual: no crea chats ni navega a ninguna parte.
 class FloatingAddButton extends StatelessWidget {
   const FloatingAddButton({super.key});
 
@@ -24,7 +21,11 @@ class FloatingAddButton extends StatelessWidget {
         child: SizedBox(
           width: AppSpace.fabSize,
           height: AppSpace.fabSize,
-          child: Icon(AppIcons.add, color: theme.colorScheme.onPrimary, size: AppSpace.iconSizeLarge),
+          child: Icon(
+            AppIcons.add,
+            color: theme.colorScheme.onPrimary,
+            size: AppSpace.iconSizeLarge,
+          ),
         ),
       ),
     );

@@ -4,18 +4,8 @@ import '../../../../core/constants/app_space.dart';
 import '../../../../shared/widgets/avatar_widget.dart';
 import '../../domain/chat.dart';
 
-/// Fila que representa un chat dentro de la lista, con el estilo actual
-/// de Telegram: sin tarjeta, sin sombra, avatar grande y contenido
-/// compacto para que quepan muchos chats en pantalla.
-///
-/// Es puramente visual: [onTap] es opcional y, cuando la pantalla la
-/// instancia, no se le asigna ninguna acción real.
 class ChatTile extends StatelessWidget {
-  const ChatTile({
-    super.key,
-    required this.chat,
-    this.onTap,
-  });
+  const ChatTile({super.key, required this.chat, this.onTap});
 
   final Chat chat;
   final VoidCallback? onTap;
@@ -28,17 +18,27 @@ class ChatTile extends StatelessWidget {
     return InkWell(
       onTap: onTap, // Estático: sin efecto cuando no se provee callback.
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: AppSpace.md, vertical: AppSpace.sm),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpace.md,
+          vertical: AppSpace.sm,
+        ),
         decoration: BoxDecoration(
           // Separación muy sutil entre chats, sin líneas gruesas ni tarjetas.
           border: Border(
-            bottom: BorderSide(color: theme.colorScheme.outlineVariant, width: AppSpace.dividerWidth),
+            bottom: BorderSide(
+              color: theme.colorScheme.outlineVariant,
+              width: AppSpace.dividerWidth,
+            ),
           ),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            AvatarWidget(imageUrl: chat.avatar, fallbackText: chat.name, size: AppSpace.avatarLarge),
+            AvatarWidget(
+              imageUrl: chat.avatar,
+              fallbackText: chat.name,
+              size: AppSpace.avatarLarge,
+            ),
             const SizedBox(width: AppSpace.md),
             _ChatInfo(name: chat.name, lastMessage: chat.lastMessage),
             const SizedBox(width: AppSpace.sm),
@@ -86,13 +86,17 @@ class _ChatInfo extends StatelessWidget {
             name,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: theme.textTheme.titleMedium?.copyWith(color: theme.colorScheme.onSurface),
+            style: theme.textTheme.titleMedium?.copyWith(
+              color: theme.colorScheme.onSurface,
+            ),
           ),
           Text(
             lastMessage,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
           ),
         ],
       ),
@@ -114,7 +118,9 @@ class _ChatTime extends StatelessWidget {
     return Text(
       time,
       style: theme.textTheme.bodySmall?.copyWith(
-        color: hasUnread ? theme.colorScheme.primary : theme.colorScheme.onSurfaceVariant,
+        color: hasUnread
+            ? theme.colorScheme.primary
+            : theme.colorScheme.onSurfaceVariant,
         height: 1.0,
       ),
     );
@@ -133,16 +139,24 @@ class _BadgeCounter extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpace.badgePaddingH, vertical: AppSpace.xs),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpace.badgePaddingH,
+        vertical: AppSpace.xs,
+      ),
       constraints: const BoxConstraints(minWidth: AppSpace.badgeMinWidth),
       decoration: BoxDecoration(
         color: theme.colorScheme.primary,
-        borderRadius: const BorderRadius.all(Radius.circular(AppSpace.badgeRadius)),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(AppSpace.badgeRadius),
+        ),
       ),
       child: Text(
         count.toString(),
         textAlign: TextAlign.center,
-        style: theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.onPrimary, height: 1.0),
+        style: theme.textTheme.labelMedium?.copyWith(
+          color: theme.colorScheme.onPrimary,
+          height: 1.0,
+        ),
       ),
     );
   }

@@ -6,19 +6,16 @@ import '../../../../core/constants/app_strings.dart';
 import '../../../../shared/widgets/avatar_widget.dart';
 import '../../data/mock_data.dart';
 
-/// Barra de navegación inferior flotante, con forma de píldora, igual al
-/// diseño actual de Telegram.
-///
-/// Es puramente decorativa: ninguno de los 4 ítems navega. El contador
-/// junto a "Chats" no es un dato inventado: se calcula sumando los
-/// mensajes no leídos que ya existen en [MockData].
 class NavigationBottomBar extends StatelessWidget {
   const NavigationBottomBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final int unreadTotal = MockData.chats.fold<int>(0, (sum, chat) => sum + chat.unread);
+    final int unreadTotal = MockData.chats.fold<int>(
+      0,
+      (sum, chat) => sum + chat.unread,
+    );
 
     return Material(
       color: theme.colorScheme.surface,
@@ -26,7 +23,10 @@ class NavigationBottomBar extends StatelessWidget {
       elevation: 6,
       shadowColor: Colors.black26,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppSpace.navBarPaddingH, vertical: AppSpace.sm),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpace.navBarPaddingH,
+          vertical: AppSpace.sm,
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -36,8 +36,16 @@ class NavigationBottomBar extends StatelessWidget {
               isSelected: true,
               badgeCount: unreadTotal,
             ),
-            const _NavItem(icon: AppIcons.contacts, label: AppStrings.navContacts, isSelected: false),
-            const _NavItem(icon: AppIcons.settings, label: AppStrings.navSettings, isSelected: false),
+            const _NavItem(
+              icon: AppIcons.contacts,
+              label: AppStrings.navContacts,
+              isSelected: false,
+            ),
+            const _NavItem(
+              icon: AppIcons.settings,
+              label: AppStrings.navSettings,
+              isSelected: false,
+            ),
             const _ProfileNavItem(),
           ],
         ),
@@ -62,16 +70,27 @@ class _NavItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final Color color = isSelected ? theme.colorScheme.primary : theme.colorScheme.onSurfaceVariant;
+    final Color color = isSelected
+        ? theme.colorScheme.primary
+        : theme.colorScheme.onSurfaceVariant;
 
     return InkWell(
       onTap: () {}, // Estático: no navega.
-      borderRadius: const BorderRadius.all(Radius.circular(AppSpace.navItemRadius)),
+      borderRadius: const BorderRadius.all(
+        Radius.circular(AppSpace.navItemRadius),
+      ),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: AppSpace.navItemPaddingH, vertical: AppSpace.sm),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpace.navItemPaddingH,
+          vertical: AppSpace.sm,
+        ),
         decoration: BoxDecoration(
-          color: isSelected ? theme.colorScheme.primaryContainer : Colors.transparent,
-          borderRadius: const BorderRadius.all(Radius.circular(AppSpace.navItemRadius)),
+          color: isSelected
+              ? theme.colorScheme.primaryContainer
+              : Colors.transparent,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(AppSpace.navItemRadius),
+          ),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -93,7 +112,10 @@ class _NavItem extends StatelessWidget {
               ),
             ),
             const SizedBox(height: AppSpace.navLabelGap),
-            Text(label, style: theme.textTheme.labelSmall?.copyWith(color: color)),
+            Text(
+              label,
+              style: theme.textTheme.labelSmall?.copyWith(color: color),
+            ),
           ],
         ),
       ),
@@ -101,9 +123,6 @@ class _NavItem extends StatelessWidget {
   }
 }
 
-/// Cuarto ítem, "Perfil": no existe una foto de usuario en el proyecto,
-/// así que se reutiliza [AvatarWidget] con un texto genérico como avatar
-/// visual simple, en vez de inventar un usuario o descargar una imagen.
 class _ProfileNavItem extends StatelessWidget {
   const _ProfileNavItem();
 
@@ -113,17 +132,27 @@ class _ProfileNavItem extends StatelessWidget {
 
     return InkWell(
       onTap: () {}, // Estático: no navega.
-      borderRadius: const BorderRadius.all(Radius.circular(AppSpace.navItemRadius)),
+      borderRadius: const BorderRadius.all(
+        Radius.circular(AppSpace.navItemRadius),
+      ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppSpace.navItemPaddingH, vertical: AppSpace.sm),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpace.navItemPaddingH,
+          vertical: AppSpace.sm,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            const AvatarWidget(size: AppSpace.avatarTiny, fallbackText: AppStrings.navProfile),
+            const AvatarWidget(
+              size: AppSpace.avatarTiny,
+              fallbackText: AppStrings.navProfile,
+            ),
             const SizedBox(height: AppSpace.navLabelGap),
             Text(
               AppStrings.navProfile,
-              style: theme.textTheme.labelSmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+              style: theme.textTheme.labelSmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
             ),
           ],
         ),
@@ -142,7 +171,10 @@ class _MiniBadge extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpace.xs, vertical: AppSpace.miniBadgePaddingV),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpace.xs,
+        vertical: AppSpace.miniBadgePaddingV,
+      ),
       constraints: const BoxConstraints(minWidth: AppSpace.miniBadgeMinWidth),
       decoration: BoxDecoration(
         color: theme.colorScheme.primary,

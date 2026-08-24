@@ -11,34 +11,28 @@ class AppTheme {
   const AppTheme._();
 
   static ThemeData get theme {
-    // Se parte de un ColorScheme generado por semilla (Material 3) y se
-    // sobreescriben los roles que sí tienen un color exacto en el diseño
-    // de referencia, para no perder fidelidad visual por la generación
-    // automática de tonos.
-    final ColorScheme colorScheme = ColorScheme.fromSeed(
-      seedColor: AppColors.primary,
-      brightness: Brightness.light,
-    ).copyWith(
-      primary: AppColors.primary,
-      onPrimary: AppColors.iconOnPrimary,
-      secondary: AppColors.secondary,
-      surface: AppColors.background,
-      onSurface: AppColors.textPrimary,
-      onSurfaceVariant: AppColors.textSecondary,
-      surfaceContainerHighest: AppColors.searchBackground,
-      primaryContainer: AppColors.selectedNavBackground,
-      outlineVariant: AppColors.divider,
-      tertiary: AppColors.sentCheck,
-    );
+    final ColorScheme colorScheme =
+        ColorScheme.fromSeed(
+          seedColor: AppColors.primary,
+          brightness: Brightness.light,
+        ).copyWith(
+          primary: AppColors.primary,
+          onPrimary: AppColors.iconOnPrimary,
+          secondary: AppColors.secondary,
+          surface: AppColors.background,
+          onSurface: AppColors.textPrimary,
+          onSurfaceVariant: AppColors.textSecondary,
+          surfaceContainerHighest: AppColors.searchBackground,
+          primaryContainer: AppColors.selectedNavBackground,
+          outlineVariant: AppColors.divider,
+          tertiary: AppColors.sentCheck,
+        );
 
     return ThemeData(
       useMaterial3: true,
       colorScheme: colorScheme,
       scaffoldBackgroundColor: colorScheme.surface,
       dividerColor: colorScheme.outlineVariant,
-      // El encabezado ya no usa un AppBar tradicional (ver ChatHeader),
-      // pero se deja un tema neutro (fondo blanco, iconos oscuros) por si
-      // algún widget de Material lo consulta.
       appBarTheme: AppBarTheme(
         backgroundColor: colorScheme.surface,
         foregroundColor: colorScheme.onSurface,
@@ -46,16 +40,27 @@ class AppTheme {
         centerTitle: false,
       ),
       splashFactory: NoSplash.splashFactory,
-      // Un slot por cada tamaño de texto realmente usado en la pantalla,
-      // para que ningún widget escriba un `fontSize` suelto.
+
       textTheme: const TextTheme(
-        titleLarge: TextStyle(fontSize: 27, fontWeight: FontWeight.w600), // título "Telegram"
-        titleMedium: TextStyle(fontSize: 17, fontWeight: FontWeight.w600), // nombre del chat
+        titleLarge: TextStyle(
+          fontSize: 27,
+          fontWeight: FontWeight.w600,
+        ), // título "Telegram"
+        titleMedium: TextStyle(
+          fontSize: 17,
+          fontWeight: FontWeight.w600,
+        ), // nombre del chat
         bodyLarge: TextStyle(fontSize: 18), // hint del buscador
         bodyMedium: TextStyle(fontSize: 15), // último mensaje
         bodySmall: TextStyle(fontSize: 13), // hora del chat
-        labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.bold), // contador no leídos
-        labelSmall: TextStyle(fontSize: 11, fontWeight: FontWeight.w500), // labels del nav
+        labelMedium: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+        ), // contador no leídos
+        labelSmall: TextStyle(
+          fontSize: 11,
+          fontWeight: FontWeight.w500,
+        ), // labels del nav
       ),
     );
   }

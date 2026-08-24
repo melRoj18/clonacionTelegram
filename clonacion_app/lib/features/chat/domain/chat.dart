@@ -17,7 +17,6 @@ class Chat {
   final String? avatar;
 
   /// Devuelve una tupla con los datos más relevantes del chat.
-  /// Ejemplo de uso de Records de Dart 3.
   (String name, String lastMessage, int unread) get summary {
     return (name, lastMessage, unread);
   }

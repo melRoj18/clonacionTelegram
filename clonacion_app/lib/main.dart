@@ -8,8 +8,6 @@ void main() {
   runApp(const TelegramCloneApp());
 }
 
-/// Punto de entrada de la app. Solo registra la pantalla de lista de
-/// chats: no existen otras rutas.
 class TelegramCloneApp extends StatelessWidget {
   const TelegramCloneApp({super.key});
 

@@ -4,11 +4,6 @@ import '../../../../core/constants/app_icons.dart';
 import '../../../../core/constants/app_space.dart';
 import '../../../../core/constants/app_strings.dart';
 
-/// Campo de búsqueda "Buscar chats" del diseño actual de Telegram: una
-/// píldora gris clara, grande, sin borde ni sombra.
-///
-/// Es puramente visual: no es un `TextField` real, no recibe foco ni
-/// entrada de texto, y no filtra la lista de chats.
 class SearchBarWidget extends StatelessWidget {
   const SearchBarWidget({super.key});
 
@@ -18,7 +13,12 @@ class SearchBarWidget extends StatelessWidget {
 
     return Container(
       color: theme.colorScheme.surface,
-      padding: const EdgeInsets.fromLTRB(AppSpace.md, AppSpace.xs, AppSpace.md, AppSpace.looseGap),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpace.md,
+        AppSpace.xs,
+        AppSpace.md,
+        AppSpace.looseGap,
+      ),
       child: Container(
         height: AppSpace.searchBarHeight,
         padding: const EdgeInsets.symmetric(horizontal: AppSpace.md),
@@ -28,7 +28,11 @@ class SearchBarWidget extends StatelessWidget {
         ),
         child: Row(
           children: <Widget>[
-            Icon(AppIcons.search, color: theme.colorScheme.onSurfaceVariant, size: AppSpace.iconSizeSmall),
+            Icon(
+              AppIcons.search,
+              color: theme.colorScheme.onSurfaceVariant,
+              size: AppSpace.iconSizeSmall,
+            ),
             const SizedBox(width: AppSpace.looseGap),
             // Flexible: si el hint alguna vez fuera más largo que el ancho
             // disponible de la píldora, se recorta con "…" en vez de
@@ -38,7 +42,9 @@ class SearchBarWidget extends StatelessWidget {
                 AppStrings.searchHint,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                style: theme.textTheme.bodyLarge?.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
               ),
             ),
           ],

@@ -3,11 +3,7 @@ import 'dart:async';
 import '../domain/chat.dart';
 import 'mock_data.dart';
 
-/// Repositorio que simula el acceso a datos (asíncrono) de los chats.
-///
-/// No realiza ninguna llamada de red real: solo demuestra el uso de
-/// [Future] (carga inicial) y [Stream] (actualizaciones) sobre datos
-/// estáticos, ya que la pantalla es puramente visual.
+/// [Future] (carga inicial) y [Stream]
 class ChatRepository {
   ChatRepository();
 

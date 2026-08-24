@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Avatar circular reutilizable, con el estilo actual de Telegram: si hay
-/// [imageUrl] se muestra la foto; si no (o si falla la carga), se muestra
-/// un fondo de color derivado del nombre con las iniciales de
-/// [fallbackText], igual que los avatares por defecto de Telegram.
 class AvatarWidget extends StatelessWidget {
   const AvatarWidget({
     super.key,
