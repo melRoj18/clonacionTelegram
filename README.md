@@ -6,7 +6,7 @@ Clon estático de la pantalla principal de chats de Telegram, desarrollado en Fl
 
 | Original (Telegram)                            | Clon                                        |
 | ---------------------------------------------- | ------------------------------------------- |
-| ![Original](clonacion_app/screenshots/OriginalTelegram.jpeg) | ![Clon](clonacion_app/screenshots/clonacionTelegram.jpeg) |
+| ![Original](OriginalTelegram.jpeg) | ![Clon](clonacionTelegram.jpeg) |
 
 ## Widgets Utilizados
 
